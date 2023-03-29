@@ -68,7 +68,12 @@ In api folder delete hellow.ts and create new file[...nextauth].ts and intall
     --> npm install bcrypt
     --> npm i -D @type/bcrypt
  
-    
+ ## Github and Google
+
+    --> npm install @next-auth/prisma-adapter
+
+
+add github and google provider in  [...nextauth].ts file , inside provider add clientId and clientSecretId
 
 
 ## Deploy on Vercel

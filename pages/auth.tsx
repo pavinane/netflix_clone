@@ -3,7 +3,9 @@ import { useCallback, useState } from "react";
 import axios from 'axios'
 import {signIn} from 'next-auth/react';
 import { useRouter } from "next/router";
-
+import {FcGoogle} from 'react-icons/fc';
+import {FaGithub} from 'react-icons/fa'
+ 
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -58,7 +60,7 @@ const Auth = () => {
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
             <h2 className="text-white text-4xl mb-8 font-semibold">
-              {variant === "register" ? "Sign In" : " Register "}
+              {variant === "register" ?   " Register ":"Sign In"}
             </h2>
             <div className="flex flex-col gap-4">
               {variant === "register" && (
@@ -94,6 +96,21 @@ const Auth = () => {
               <button onClick={ variant === 'login' ? login : register} className=" rounded-md bg-red-600 hover:bg-red-700 text-white py-3 w-full transition">
                 {variant === "login" ? "Login" : "Sign up"}
               </button>
+              <div className="flex items-center justify-center gap-4 mt-8">
+
+                <div 
+                 onClick={() => signIn('google',{ callbackUrl:'/'})}
+                className="w-10 h-10 bg-white rounded-full flex items-center justify-center
+                 cursor-pointer hover:opacity-80 transition
+                ">
+                  <FcGoogle size={30}/>
+                </div>
+                <div
+                onClick={() => signIn('github', { callbackUrl:"/" } )}
+                className="w-10 h-10 cursor-pointer hover:opacity-80 transition bg-white rounded-full flex items-center justify-center">
+                  <FaGithub size={30}/>
+                </div>
+              </div>
               <p className=" text-neutral-500 mt-12">
                 {
                     variant === "login" ? "First Time using Netflix?":"Already have an account"
