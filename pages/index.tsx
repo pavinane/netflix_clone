@@ -1,4 +1,23 @@
-import Head from 'next/head'
+import Head from "next/head";
+import { NextPageContext } from "next";
+import { getSession, signOut } from "next-auth/react";
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
+
 export default function Home() {
   return (
     <>
@@ -9,11 +28,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-       
-        <h1 className='text-red-400 text-3xl'>welcome</h1>
+        <div className="flex justify-between items-center py-4">
+          <h1 className="text-red-400 text-3xl">welcome</h1>
+
+          <button onClick={() => signOut()} className="bg-white p-3 rounded-md">Log Out</button>
+        </div>
       </main>
     </>
   );
 }
-
-
