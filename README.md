@@ -76,4 +76,7 @@ In api folder delete hellow.ts and create new file[...nextauth].ts and intall
 add github and google provider in  [...nextauth].ts file , inside provider add clientId and clientSecretId
 
 
+## swr
+
+
 ## Deploy on Vercel
