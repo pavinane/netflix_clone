@@ -10,7 +10,7 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter()
+  // const router = useRouter()
 
   const [variant, setVariant] = useState("login");
 
@@ -25,15 +25,15 @@ const Auth = () => {
       await signIn('credentials',{
         email,
         password,
-        redirect:false,
-        callbackUrl:'/'
+        // redirect:false,
+        callbackUrl:'/profile'
       });
-      router.push('/')
+      // router.push('/')
     } catch (error) {
       console.log(error)
     }
 
-  },[email, password,router])
+  },[email, password])
 
 
   const register = useCallback(async() => {
@@ -99,14 +99,14 @@ const Auth = () => {
               <div className="flex items-center justify-center gap-4 mt-8">
 
                 <div 
-                 onClick={() => signIn('google',{ callbackUrl:'/'})}
+                 onClick={() => signIn('google',{ callbackUrl:'/profile'})}
                 className="w-10 h-10 bg-white rounded-full flex items-center justify-center
                  cursor-pointer hover:opacity-80 transition
                 ">
                   <FcGoogle size={30}/>
                 </div>
                 <div
-                onClick={() => signIn('github', { callbackUrl:"/" } )}
+                onClick={() => signIn('github', { callbackUrl:"/profile" } )}
                 className="w-10 h-10 cursor-pointer hover:opacity-80 transition bg-white rounded-full flex items-center justify-center">
                   <FaGithub size={30}/>
                 </div>
