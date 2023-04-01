@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
@@ -19,6 +20,8 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 export default function Home() {
+
+  const { data: user} = useCurrentUser()
   return (
     <>
       <Head>
@@ -30,7 +33,7 @@ export default function Home() {
       <main>
         <div className="flex justify-between items-center py-4">
           <h1 className="text-red-400 text-3xl">welcome</h1>
-
+          <h2 className="text-white">welcome to netflix {user?.name} and {user?.email}</h2>
           <button onClick={() => signOut()} className="bg-white p-3 rounded-md">Log Out</button>
         </div>
       </main>
