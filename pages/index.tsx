@@ -4,6 +4,7 @@ import Head from "next/head";
 import { NextPageContext } from "next";
 import { getSession } from "next-auth/react";
 import Navbar from "@/components/Navbar";
+import Billboard from "@/components/Billboard";
 
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -33,9 +34,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="py-4">
+        
          <Navbar/>
-        </div>
+         <Billboard />
+       
       </main>
     </>
   );
