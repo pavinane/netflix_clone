@@ -44,12 +44,12 @@ export default NextAuth({
                 }
               });
 
-              if(!user || !user.hasedPasswoord){
+              if(!user || !user.hashedPassword){
                  throw new Error('Email does not exist')
               }
 
               const isCorrectPassword = await compare(
-                credentials.password, user.hasedPasswoord
+                credentials.password, user.hashedPassword
               )
 
               if(!isCorrectPassword){
